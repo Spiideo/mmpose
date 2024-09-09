@@ -1,0 +1,19 @@
+{
+    "build": {"dockerfile": "Dockerfile", "args": {"USER": "${localEnv:USER}"}},  // UID and GID will be updated on container startup by vscode
+    "containerEnv": {"DISPLAY": "${localEnv:DISPLAY}"},
+    "runArgs": ["--net=host", "--gpus", "all"],
+    "customizations": {
+        "vscode": {
+          "extensions": ["ms-python.python", "ms-azuretools.vscode-docker", "ms-python.pylint", "usernamehw.errorlens"],
+          "settings": {
+            "python.defaultInterpreterPath": "/opt/conda/bin/python"
+          },
+        }
+    },
+    "mounts": [
+      "source=${localEnv:HOME},target=${localEnv:HOME},type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.cache,target=/workspace/home/.cache,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.torch,target=/workspace/home/.torch,type=bind,consistency=cached",
+    ],
+    // "postStartCommand": "pip install -e .[all]"
+}
