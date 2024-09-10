@@ -206,7 +206,7 @@ class PackPoseInputs(BaseTransform):
                     _labels = np.stack(results[key])
                     gt_instance_labels.set_field(_labels, packed_key)
                 else:
-                    gt_instance_labels.set_field(results[key], packed_key)
+                    gt_instance_labels.set_field(np.atleast_1d(results[key]), packed_key)
         data_sample.gt_instance_labels = gt_instance_labels.to_tensor()
 
         # pack fields

@@ -12,10 +12,11 @@ from .mpii_trb_dataset import MpiiTrbDataset
 from .ochuman_dataset import OCHumanDataset
 from .posetrack18_dataset import PoseTrack18Dataset
 from .posetrack18_video_dataset import PoseTrack18VideoDataset
+from .spiideo_scenes import SpiideoScenes
 
 __all__ = [
     'CocoDataset', 'MpiiDataset', 'MpiiTrbDataset', 'AicDataset',
     'CrowdPoseDataset', 'OCHumanDataset', 'MhpDataset', 'PoseTrack18Dataset',
     'JhmdbDataset', 'PoseTrack18VideoDataset', 'HumanArtDataset',
-    'HumanArt21Dataset', 'ExlposeDataset'
+    'HumanArt21Dataset', 'ExlposeDataset', 'SpiideoScenes'
 ]

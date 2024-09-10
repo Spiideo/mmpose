@@ -7,5 +7,4 @@ openmim
 mmengine
 mmcv==2.1.0
 mmdet>=3.1.0
-mmpose>=1.1.0
 importlib_metadata
