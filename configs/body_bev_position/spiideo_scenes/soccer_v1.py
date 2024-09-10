@@ -1,6 +1,6 @@
 
 dataset_type = 'SpiideoScenes'
-dataset_root = 'data/SpiideoScenes/SoccerCrowd/v1/'
+dataset_root = 'data/SpiideoScenes/Soccer/v1/'
 
 train_dataset=dict(
         type=dataset_type,
