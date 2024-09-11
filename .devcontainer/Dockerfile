@@ -26,6 +26,7 @@ RUN --mount=type=bind,from=build,source=/wheels,target=/wheels --mount=type=cach
 
 FROM base as vscode
 RUN curl -L 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' | tar -C /usr/local/bin/ -x -v -z -f -
+ENV PYTHONPATH=.
 
 FROM base as devel
 RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt apt-get update && apt-get autoclean && DEBIAN_FRONTEND=noninteractive TZ=CEST \

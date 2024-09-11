@@ -8,3 +8,8 @@ mmengine
 mmcv==2.1.0
 mmdet>=3.1.0
 importlib_metadata
+
+chumpy
+json_tricks
+munkres
+xtcocotools>=1.12
