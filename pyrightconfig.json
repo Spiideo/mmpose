@@ -1,0 +1,7 @@
+{
+    "exclude": [
+        "data",
+        "**/__pycache__",
+        "work_dirs",
+    ]
+}
