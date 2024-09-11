@@ -8,3 +8,9 @@ val_dataloader = dict(dataset=_base_.val_dataset)
 test_dataloader = dict(dataset=_base_.test_dataset)
 val_evaluator = dict(ann_file=_base_.val_evaluator_ann_file)
 test_evaluator = dict(ann_file=_base_.test_evaluator_ann_file)
+
+model = dict(head=dict(
+    num_keypoints=2,
+    assigner=dict(oks_calculator=dict(type='PoseOKS', metainfo=_base_.dataset_metainfo)),
+    loss_oks=dict(metainfo=_base_.dataset_metainfo),
+))
