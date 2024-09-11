@@ -6,8 +6,8 @@ _base_ = [
 train_dataloader = dict(dataset=_base_.train_dataset)
 val_dataloader = dict(dataset=_base_.val_dataset)
 test_dataloader = dict(dataset=_base_.test_dataset)
-val_evaluator = dict(ann_file=_base_.val_evaluator_ann_file)
-test_evaluator = dict(ann_file=_base_.test_evaluator_ann_file)
+val_evaluator = dict(ann_file=_base_.val_evaluator_ann_file, iou_type='bbox', use_area=False)
+test_evaluator = dict(ann_file=_base_.test_evaluator_ann_file, iou_type='bbox', use_area=False)
 
 model = dict(head=dict(
     num_keypoints=2,
