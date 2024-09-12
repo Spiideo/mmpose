@@ -1,5 +1,5 @@
 _base_ = [
-    '../../body_2d_keypoint/yoloxpose/coco/yoloxpose_tiny_4xb64-300e_coco-416.py',
+    '../../body_2d_keypoint/yoloxpose/coco/yoloxpose_m_8xb32-300e_coco-640.py',
     'soccer_v1.py',
 ]
 
