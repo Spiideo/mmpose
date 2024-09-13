@@ -11,7 +11,7 @@ from mmengine.fileio import dump, get_local_path, load
 from mmengine.logging import MessageHub, MMLogger, print_log
 from xtcocotools.coco import COCO
 from xtcocotools.cocoeval import COCOeval
-from cocotst import LocSimCOCOeval, BBoxLocSimCOCOeval
+from sskit.coco import LocSimCOCOeval, BBoxLocSimCOCOeval
 
 from mmpose.registry import METRICS
 from mmpose.structures.bbox import bbox_xyxy2xywh
