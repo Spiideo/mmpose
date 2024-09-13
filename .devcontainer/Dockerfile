@@ -15,6 +15,7 @@ ENV CUDA_HOME=/usr/local/cuda/
 COPY requirements*.txt /workspace/
 RUN --mount=type=cache,target=/root/.cache/pip pip wheel --wheel-dir /wheels --no-deps -r requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip pip wheel --wheel-dir /wheels-devel --no-deps -r requirements-devel.txt
+COPY *.whl /wheels/
 
 FROM pytorch/pytorch:${TORCH_VERSION}-runtime as base
 RUN rm -f /etc/apt/apt.conf.d/docker-clean
