@@ -27,3 +27,57 @@ test_dataset=dict(
 
 val_evaluator_ann_file = dataset_root + 'annotations/val.json'
 test_evaluator_ann_file = dataset_root + 'annotations/test.json'
+
+bev_val_evaluator = [
+    dict(
+        type='CocoMetric',
+        ann_file=val_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='bbox',
+        prefix='bbox',
+    ),
+    dict(
+        type='CocoMetric',
+        ann_file=val_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='locsim_bbox',
+        prefix='locsim_bbox',
+    ),
+    dict(
+        type='CocoMetric',
+        ann_file=val_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='locsim',
+        prefix='locsim',
+    ),
+]
+
+bev_test_evaluator = [
+    dict(
+        type='CocoMetric',
+        ann_file=test_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='bbox',
+        prefix='bbox',
+    ),
+    dict(
+        type='CocoMetric',
+        ann_file=test_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='locsim_bbox',
+        prefix='locsim_bbox',
+    ),
+    dict(
+        type='CocoMetric',
+        ann_file=test_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='locsim',
+        prefix='locsim',
+    ),
+]

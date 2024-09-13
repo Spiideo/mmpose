@@ -11,6 +11,7 @@ from mmengine.fileio import dump, get_local_path, load
 from mmengine.logging import MessageHub, MMLogger, print_log
 from xtcocotools.coco import COCO
 from xtcocotools.cocoeval import COCOeval
+from cocotst import LocSimCOCOeval, BBoxLocSimCOCOeval
 
 from mmpose.registry import METRICS
 from mmpose.structures.bbox import bbox_xyxy2xywh
@@ -560,8 +561,12 @@ class CocoMetric(BaseMetric):
         res_file = f'{outfile_prefix}.keypoints.json'
         coco_det = self.coco.loadRes(res_file)
         sigmas = self.dataset_meta['sigmas']
-        coco_eval = COCOeval(self.coco, coco_det, self.iou_type, sigmas,
-                             self.use_area)
+        if self.iou_type == 'locsim':
+            coco_eval = LocSimCOCOeval(self.coco, coco_det, "bbox", sigmas, self.use_area)
+        elif self.iou_type == 'locsim_bbox':
+            coco_eval = BBoxLocSimCOCOeval(self.coco, coco_det, "bbox", sigmas, self.use_area)
+        else:
+            coco_eval = COCOeval(self.coco, coco_det, self.iou_type, sigmas, self.use_area)
         coco_eval.params.useSegm = None
         coco_eval.evaluate()
         coco_eval.accumulate()
