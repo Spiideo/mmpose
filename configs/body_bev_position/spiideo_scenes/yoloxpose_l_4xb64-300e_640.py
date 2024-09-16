@@ -16,3 +16,5 @@ model = dict(head=dict(
     assigner=dict(oks_calculator=dict(type='PoseOKS', metainfo=_base_.dataset_metainfo)),
     loss_oks=dict(metainfo=_base_.dataset_metainfo),
 ))
+
+optim_wrapper = dict(optimizer=dict(lr=0.001))
