@@ -6,8 +6,9 @@ _base_ = [
 train_dataloader = dict(dataset=_base_.train_dataset, num_workers=16, batch_size=64)
 val_dataloader = dict(dataset=_base_.val_dataset, num_workers=4)
 test_dataloader = dict(dataset=_base_.test_dataset, num_workers=4)
-val_evaluator = dict(ann_file=_base_.val_evaluator_ann_file, iou_type='bbox')
-test_evaluator = dict(ann_file=_base_.test_evaluator_ann_file, iou_type='bbox')
+val_evaluator = _base_.bev_val_evaluator
+test_evaluator = _base_.bev_test_evaluator
+visualizer = _base_.clearml_visualizer
 
 model = dict(head=dict(
     num_keypoints=2,
