@@ -97,6 +97,7 @@ def merge_args(cfg, args):
     # enable automatic-mixed-precision training
     if args.amp is True:
         from mmengine.optim import AmpOptimWrapper, OptimWrapper
+        from mmengine.dist import get_world_size
         optim_wrapper = cfg.optim_wrapper.get('type', OptimWrapper)
         assert optim_wrapper in (OptimWrapper, AmpOptimWrapper,
                                  'OptimWrapper', 'AmpOptimWrapper'), \
@@ -104,6 +105,9 @@ def merge_args(cfg, args):
             f'`{optim_wrapper}.'
         cfg.optim_wrapper.type = 'AmpOptimWrapper'
         cfg.optim_wrapper.setdefault('loss_scale', 'dynamic')
+        if get_world_size() > 1:
+            print("Setting use_fsdp=True")
+            cfg.optim_wrapper.setdefault('use_fsdp', True)
 
     # resume training
     if args.resume == 'auto':
