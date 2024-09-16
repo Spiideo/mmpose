@@ -86,6 +86,5 @@ clearml_visualizer=dict(type='PoseLocalVisualizer', vis_backends=[dict(
     type='ClearMLVisBackend',
     init_kwargs=dict(
         project_name='SpiideoScenesSoccerV1',
-        task_name='yoloxpose_tiny_4xb64-300e_coco-416',
     )
 )])

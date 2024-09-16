@@ -29,3 +29,6 @@ val_pipeline = deepcopy(_base_.val_pipeline)
 val_pipeline[1]['input_size'] = input_size
 val_dataloader = dict(dataset=dict(pipeline=val_pipeline))
 test_dataloader = val_dataloader
+
+visualizer = deepcopy(_base_.visualizer)
+visualizer['vis_backends'][0]['init_kwargs']['task_name'] = 'yoloxpose_l_8xb32-300e_coco-1280'

@@ -9,6 +9,7 @@ test_dataloader = dict(dataset=_base_.test_dataset, num_workers=4)
 val_evaluator = _base_.bev_val_evaluator
 test_evaluator = _base_.bev_test_evaluator
 visualizer = _base_.clearml_visualizer
+visualizer['vis_backends'][0]['init_kwargs']['task_name'] = 'yoloxpose_s_8xb32-300e_coco-640'
 
 model = dict(head=dict(
     num_keypoints=2,
