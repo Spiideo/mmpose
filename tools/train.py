@@ -154,6 +154,9 @@ def main():
     # build the runner from config
     runner = Runner.from_cfg(cfg)
 
+    from mmengine.dist import get_rank, get_world_size
+    print(f'Rank: {get_rank()}, World: {get_world_size()}\n')
+
     # start training
     runner.train()
 
