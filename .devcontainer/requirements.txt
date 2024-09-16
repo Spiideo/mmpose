@@ -13,3 +13,5 @@ chumpy
 json_tricks
 munkres
 xtcocotools>=1.12
+clearml
+

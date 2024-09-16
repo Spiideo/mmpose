@@ -14,6 +14,7 @@
       "source=${localEnv:HOME},target=${localEnv:HOME},type=bind,consistency=cached",
       "source=${localEnv:HOME}/.cache,target=/workspace/home/.cache,type=bind,consistency=cached",
       "source=${localEnv:HOME}/.torch,target=/workspace/home/.torch,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/clearml.conf,target=/workspace/home/clearml.conf,type=bind,consistency=cached",
     ],
-    "postStartCommand": "pip install -e ."
+    "postStartCommand": "pip install -e .",
 }
