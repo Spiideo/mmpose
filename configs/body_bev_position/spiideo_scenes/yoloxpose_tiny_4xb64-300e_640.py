@@ -17,4 +17,6 @@ model = dict(head=dict(
     loss_oks=dict(metainfo=_base_.dataset_metainfo),
 ))
 
-optim_wrapper = dict(optimizer=dict(lr=0.001))
+optim_wrapper = dict(optimizer=dict(lr=0.0001))
+param_scheduler = _base_.param_scheduler
+param_scheduler[1]['CosineAnnealingLR']['eta_min'] = 0.000005
