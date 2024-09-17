@@ -104,6 +104,7 @@ def merge_args(cfg, args):
             f'`{optim_wrapper}.'
         cfg.optim_wrapper.type = 'AmpOptimWrapper'
         cfg.optim_wrapper.setdefault('loss_scale', 'dynamic')
+        cfg.optim_wrapper.setdefault('use_fsdp', True)
 
     # resume training
     if args.resume == 'auto':
