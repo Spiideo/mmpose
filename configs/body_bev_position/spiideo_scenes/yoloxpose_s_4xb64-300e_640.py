@@ -17,4 +17,4 @@ model = dict(head=dict(
     loss_oks=dict(metainfo=_base_.dataset_metainfo),
 ))
 
-optim_wrapper = dict(optimizer=dict(lr=0.001))
+optim_wrapper = dict(optimizer=dict(lr=0.0001))
