@@ -18,3 +18,5 @@ model = dict(head=dict(
 ))
 
 optim_wrapper = dict(optimizer=dict(lr=0.001))
+param_scheduler = _base_.param_scheduler
+param_scheduler[1]['CosineAnnealingLR']['eta_min'] = 0.00005
