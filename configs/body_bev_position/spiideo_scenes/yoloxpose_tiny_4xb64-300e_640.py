@@ -20,3 +20,4 @@ model = dict(head=dict(
 optim_wrapper = dict(optimizer=dict(lr=0.0001))
 param_scheduler = _base_.param_scheduler
 param_scheduler[1]['eta_min'] = 0.000005
+custom_hooks[0]['num_last_epochs'] = 100
