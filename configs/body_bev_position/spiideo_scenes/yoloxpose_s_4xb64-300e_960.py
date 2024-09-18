@@ -1,8 +1,8 @@
 from copy import deepcopy
 
-_base_ = 'yoloxpose_tiny_4xb64-300e_640.py'
+_base_ = 'yoloxpose_s_4xb64-300e_640.py'
 
-xside = yside = 1280
+xside = yside = 960
 input_size = (xside, yside)
 max_input_size = (int(1.25*xside), int(1.25*yside))
 
@@ -31,4 +31,4 @@ val_dataloader = dict(dataset=dict(pipeline=val_pipeline))
 test_dataloader = val_dataloader
 
 visualizer = deepcopy(_base_.visualizer)
-visualizer['vis_backends'][0]['init_kwargs']['task_name'] = f'yoloxpose_tiny_8xb32-300e_coco-{input_size}'
+visualizer['vis_backends'][0]['init_kwargs']['task_name'] = f'yoloxpose_s_8xb32-300e_coco-{input_size}'

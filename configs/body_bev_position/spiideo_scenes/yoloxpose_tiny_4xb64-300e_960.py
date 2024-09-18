@@ -2,7 +2,7 @@ from copy import deepcopy
 
 _base_ = 'yoloxpose_tiny_4xb64-300e_640.py'
 
-xside = yside = 1280
+xside = yside = 960
 input_size = (xside, yside)
 max_input_size = (int(1.25*xside), int(1.25*yside))
 
