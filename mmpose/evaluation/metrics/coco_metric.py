@@ -17,6 +17,7 @@ from mmpose.registry import METRICS
 from mmpose.structures.bbox import bbox_xyxy2xywh
 from ..functional import (oks_nms, soft_oks_nms, transform_ann, transform_pred,
                           transform_sigmas)
+import json
 
 
 @METRICS.register_module()
@@ -107,7 +108,9 @@ class CocoMetric(BaseMetric):
                  gt_converter: Dict = None,
                  outfile_prefix: Optional[str] = None,
                  collect_device: str = 'cpu',
-                 prefix: Optional[str] = None) -> None:
+                 prefix: Optional[str] = None,
+                 phase: Optional[str] = None,
+                 ) -> None:
         super().__init__(collect_device=collect_device, prefix=prefix)
         self.ann_file = ann_file
         # initialize coco helper with the annotation json file
@@ -152,6 +155,7 @@ class CocoMetric(BaseMetric):
         self.outfile_prefix = outfile_prefix
         self.pred_converter = pred_converter
         self.gt_converter = gt_converter
+        self.phase = phase
 
     @property
     def dataset_meta(self) -> Optional[dict]:
@@ -567,6 +571,14 @@ class CocoMetric(BaseMetric):
             coco_eval = BBoxLocSimCOCOeval(self.coco, coco_det, "bbox", sigmas, self.use_area)
         else:
             coco_eval = COCOeval(self.coco, coco_det, self.iou_type, sigmas, self.use_area)
+
+        if self.iou_type.startswith('locsim') and self.phase == 'test':
+            val_stats_fn = f'{outfile_prefix}_val_stats.json'
+            if not osp.exists(val_stats_fn):
+                raise FileNotFoundError('For a proper test evaluation: first run a val evaluation (to get optimal score threshold form validation set) with the same outfile_prefix.')
+            with open(val_stats_fn) as fd:
+                coco_eval.score_threshold = json.load(fd)['stats']['score_threshold']
+
         coco_eval.params.useSegm = None
         coco_eval.evaluate()
         coco_eval.accumulate()
@@ -577,13 +589,21 @@ class CocoMetric(BaseMetric):
                 'AP', 'AP .5', 'AP .75', 'AR', 'AR .5', 'AR .75', 'AP(E)',
                 'AP(M)', 'AP(H)'
             ]
+        elif self.iou_type.startswith('locsim'):
+            stats_names = [
+                'AP', 'AP .5', 'AP .75', 'AP (S)', 'AP (M)', 'AP (L)', 'AR', 'AR .5',
+                'AR .75', 'AR (S)', 'AR (M)', 'AR (L)', 'precision', 'recall', 'f1', 'score_threshold'
+            ]
         else:
             stats_names = [
-                'AP', 'AP .5', 'AP .75', 'AP (M)', 'AP (L)', 'AR', 'AR .5',
-                'AR .75', 'AR (M)', 'AR (L)'
+                'AP', 'AP .5', 'AP .75', 'AP (S)', 'AP (M)', 'AP (L)', 'AR', 'AR .5',
+                'AR .75', 'AR (S)', 'AR (M)', 'AR (L)'
             ]
 
+        assert len(stats_names) == len(coco_eval.stats)
         info_str = list(zip(stats_names, coco_eval.stats))
+        with open(f'{outfile_prefix}_{self.phase}_stats.json', 'w') as fd:
+            json.dump(dict(stats=dict(info_str)), fd, indent=4)
 
         return info_str
 

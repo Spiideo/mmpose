@@ -1,3 +1,4 @@
+outfile_prefix = f'/tmp/tmp_results_'
 
 dataset_type = 'SpiideoScenes'
 dataset_root = 'data/SpiideoScenes/Soccer/v1/'
@@ -44,6 +45,8 @@ bev_val_evaluator = [
         nms_mode='none',
         iou_type='locsim_bbox',
         prefix='locsim_bbox',
+        phase='val',
+        outfile_prefix=outfile_prefix,
     ),
     dict(
         type='CocoMetric',
@@ -52,6 +55,8 @@ bev_val_evaluator = [
         nms_mode='none',
         iou_type='locsim',
         prefix='locsim',
+        phase='val',
+        outfile_prefix=outfile_prefix,
     ),
 ]
 
@@ -62,7 +67,7 @@ bev_test_evaluator = [
         score_mode='bbox',
         nms_mode='none',
         iou_type='bbox',
-        prefix='bbox',
+        prefix='test/bbox',
     ),
     dict(
         type='CocoMetric',
@@ -70,7 +75,9 @@ bev_test_evaluator = [
         score_mode='bbox',
         nms_mode='none',
         iou_type='locsim_bbox',
-        prefix='locsim_bbox',
+        prefix='test/locsim_bbox',
+        phase='test',
+        outfile_prefix=outfile_prefix,
     ),
     dict(
         type='CocoMetric',
@@ -78,7 +85,9 @@ bev_test_evaluator = [
         score_mode='bbox',
         nms_mode='none',
         iou_type='locsim',
-        prefix='locsim',
+        prefix='test/locsim',
+        phase='test',
+        outfile_prefix=outfile_prefix,
     ),
 ]
 

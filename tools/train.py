@@ -160,6 +160,7 @@ def main():
 
     # start training
     runner.train()
+    runner.test()
 
 
 if __name__ == '__main__':

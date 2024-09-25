@@ -159,6 +159,7 @@ def main():
         runner.register_hook(SaveMetricHook(), 'LOWEST')
 
     # start testing
+    runner.val()
     runner.test()
 
 
