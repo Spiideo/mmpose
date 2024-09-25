@@ -5,7 +5,7 @@ from sskit.coco import LocSimCOCOeval, BBoxLocSimCOCOeval
 import time
 
 class LocSimCOCOeval(LocSimCOCOeval):
-    def accumulate(self, p = None):
+    def not_accumulate(self, p = None):
         '''
         Accumulate per image evaluation results and store the result in self.eval
         :param p: input params for evaluation
@@ -89,6 +89,7 @@ class LocSimCOCOeval(LocSimCOCOeval):
 
                         for i in range(nd-1, 0, -1):
                             if pr[i] > pr[i-1]:
+                                assert False
                                 pr[i-1] = pr[i]
 
                         inds = np.searchsorted(rc, p.recThrs, side='left')
@@ -139,4 +140,22 @@ if __name__ == '__main__':
     len(coco_eval.params.maxDets) # M
 
     iou = coco_eval.params.iouThrs == 0.5
-    coco_eval.eval['precision'][iou, :, 0, 0, -1]
+    coco_eval.params.catIds
+    area = coco_eval.params.areaRngLbl.index('all')
+    dets = np.argmax(coco_eval.params.maxDets)
+
+
+    precision = np.squeeze(coco_eval.eval['precision'][iou, :, 0, area, dets])
+    scores = np.squeeze(coco_eval.eval['scores'][iou, :, 0, area, dets])
+    recall = coco_eval.params.recThrs
+    f1 = 2 * precision * recall / (precision + recall)
+    f1.max()
+    threshold = scores[f1.argmax()]
+
+    i = np.searchsorted(-scores, -threshold, 'right') - 1
+    scores[i]
+    f1[i]
+    precision[i]
+    recall[i]
+
+    len(coco_eval.stats)
