@@ -94,6 +94,7 @@ def inference(args, input_shape, logger):
                 show_arch=args.show_arch_info)
             avg_flops.append(result['flops'])
         mean_flops = _format_size(int(np.average(avg_flops)))
+        outputs['flops'] = np.average(avg_flops)
         outputs['flops_str'] = mean_flops
         outputs['params_str'] = result['params_str']
         outputs['out_table'] = result['out_table']
@@ -130,6 +131,7 @@ def main():
     input_shape = (args.batch_size, ) + input_shape
     print(f'{split_line}\nInput shape: {input_shape}\n'
           f'Flops: {flops}\nParams: {params}\n{split_line}')
+    print(f'Flops:', outputs['flops'])
     print(outputs['out_table'])
     if args.show_arch_info:
         print(outputs['out_arch'])
