@@ -68,6 +68,7 @@ bev_test_evaluator = [
         nms_mode='none',
         iou_type='bbox',
         prefix='bbox',
+        phase='test',
     ),
     dict(
         type='CocoMetric',
