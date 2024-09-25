@@ -27,7 +27,14 @@ class LocSimCOCOeval(LocSimCOCOeval):
     def summarize(self):
         super().summarize()
         i = self.eval['f1_50'].argmax()
-        stats = [self.eval['precision_50'][i], self.eval['recall_50'][i], self.eval['f1_50'][i], self.eval['scores_50'][i]]
+        threshold = (self.eval['scores_50'][i] + self.eval['scores_50'][i+1]) / 2
+        stats = [self.eval['precision_50'][i], self.eval['recall_50'][i], self.eval['f1_50'][i], threshold]
+        if hasattr(self.params, 'score_threshold'):
+            threshold = self.params.score_threshold
+        else:
+            threshold = 0.5
+        i = np.searchsorted(-self.eval['scores_50'], -threshold, 'right') - 1
+        stats += [self.eval['precision_50'][i], self.eval['recall_50'][i], self.eval['f1_50'][i], threshold]
         self.stats = np.concatenate([self.stats, stats])
 
 
@@ -43,6 +50,7 @@ if __name__ == '__main__':
 
     coco_eval.params.useSegm = None
     coco_eval.params.imgIds = [0]
+    coco_eval.params.score_threshold = 0.5
 
 
     coco_eval.evaluate()
@@ -51,7 +59,10 @@ if __name__ == '__main__':
 
     coco_eval.eval['precision_50'].shape
     coco_eval.eval['f1_50'].max()
-    len(coco_eval.stats)
+    coco_eval.eval['scores_50']
+    coco_eval.stats[-8:-4]
+    coco_eval.stats[-4:]
+    self = coco_eval
 
     coco_eval.eval['scores'].shape
     coco_eval.eval['precision'].shape
