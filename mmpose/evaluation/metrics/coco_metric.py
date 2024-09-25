@@ -110,10 +110,8 @@ class CocoMetric(BaseMetric):
                  collect_device: str = 'cpu',
                  prefix: Optional[str] = None,
                  phase: Optional[str] = None,
+                 val_prefix: Optional[str] = None,
                  ) -> None:
-        self.base_prefix = prefix
-        if phase is not None:
-            prefix = osp.join(phase, prefix)
         super().__init__(collect_device=collect_device, prefix=prefix)
         self.ann_file = ann_file
         # initialize coco helper with the annotation json file
@@ -159,6 +157,7 @@ class CocoMetric(BaseMetric):
         self.pred_converter = pred_converter
         self.gt_converter = gt_converter
         self.phase = phase
+        self.val_prefix = prefix
 
     @property
     def dataset_meta(self) -> Optional[dict]:
@@ -575,9 +574,8 @@ class CocoMetric(BaseMetric):
         else:
             coco_eval = COCOeval(self.coco, coco_det, self.iou_type, sigmas, self.use_area)
 
-        safe_prefix = self.base_prefix.replace('/', '__')
         if self.iou_type.startswith('locsim') and self.phase == 'test':
-            val_stats_fn = f'{outfile_prefix}_val_{safe_prefix}_stats.json'
+            val_stats_fn = f'{outfile_prefix}_val_{self.val_prefix.replace('/', '__')}_stats.json'
             if not osp.exists(val_stats_fn):
                 raise FileNotFoundError('For a proper test evaluation: first run a val evaluation (to get optimal score threshold form validation set) with the same outfile_prefix.')
             with open(val_stats_fn) as fd:
@@ -606,7 +604,7 @@ class CocoMetric(BaseMetric):
 
         assert len(stats_names) == len(coco_eval.stats)
         info_str = list(zip(stats_names, coco_eval.stats))
-        with open(f'{outfile_prefix}_{self.phase}_{safe_prefix}_stats.json', 'w') as fd:
+        with open(f'{outfile_prefix}_{self.phase}_{self.prefix.replace('/', '__')}_stats.json', 'w') as fd:
             json.dump(dict(stats=dict(info_str)), fd, indent=4)
 
         return info_str
