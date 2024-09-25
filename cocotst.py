@@ -50,46 +50,12 @@ if __name__ == '__main__':
 
     coco_eval.params.useSegm = None
     coco_eval.params.imgIds = [0]
-    coco_eval.params.score_threshold = 0.5
+    coco_eval.params.score_threshold = 0.1
 
 
     coco_eval.evaluate()
     coco_eval.accumulate()
     coco_eval.summarize()
 
-    coco_eval.eval['precision_50'].shape
-    coco_eval.eval['f1_50'].max()
-    coco_eval.eval['scores_50']
-    coco_eval.stats[-8:-4]
-    coco_eval.stats[-4:]
-    self = coco_eval
-
-    coco_eval.eval['scores'].shape
-    coco_eval.eval['precision'].shape
-    coco_eval.eval['recall'].shape
-    len(coco_eval.params.iouThrs) # T
-    len(coco_eval.params.recThrs) # R
-    len(coco_eval.params.catIds)  # K
-    len(coco_eval.params.areaRng) # A
-    len(coco_eval.params.maxDets) # M
-
-    iou = coco_eval.params.iouThrs == 0.5
-    coco_eval.params.catIds
-    area = coco_eval.params.areaRngLbl.index('all')
-    dets = np.argmax(coco_eval.params.maxDets)
-
-
-    precision = np.squeeze(coco_eval.eval['precision'][iou, :, 0, area, dets])
-    scores = np.squeeze(coco_eval.eval['scores'][iou, :, 0, area, dets])
-    recall = coco_eval.params.recThrs
-    f1 = 2 * precision * recall / (precision + recall)
-    f1.max()
-    threshold = scores[f1.argmax()]
-
-    i = np.searchsorted(-scores, -threshold, 'right') - 1
-    scores[i]
-    f1[i]
-    precision[i]
-    recall[i]
-
-    len(coco_eval.stats)
+    print(coco_eval.stats[-8:-4])
+    print(coco_eval.stats[-4:])
