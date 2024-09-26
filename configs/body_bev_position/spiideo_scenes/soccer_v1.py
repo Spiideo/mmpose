@@ -37,7 +37,6 @@ bev_val_evaluator = [
         nms_mode='none',
         iou_type='bbox',
         prefix='bbox',
-        phase='val',
     ),
     dict(
         type='CocoMetric',
@@ -46,8 +45,8 @@ bev_val_evaluator = [
         nms_mode='none',
         iou_type='locsim_bbox',
         prefix='locsim_bbox',
+        outfile_prefix=outfile_prefix + 'locsim_bbox',
         phase='val',
-        outfile_prefix=outfile_prefix,
     ),
     dict(
         type='CocoMetric',
@@ -56,8 +55,8 @@ bev_val_evaluator = [
         nms_mode='none',
         iou_type='locsim',
         prefix='locsim',
+        outfile_prefix=outfile_prefix + 'locsim',
         phase='val',
-        outfile_prefix=outfile_prefix,
     ),
 ]
 
@@ -69,7 +68,6 @@ bev_test_evaluator = [
         nms_mode='none',
         iou_type='bbox',
         prefix='test/bbox',
-        phase='test',
     ),
     dict(
         type='CocoMetric',
@@ -78,9 +76,8 @@ bev_test_evaluator = [
         nms_mode='none',
         iou_type='locsim_bbox',
         prefix='test/locsim_bbox',
-        val_prefix='locsim_bbox',
+        outfile_prefix=outfile_prefix + 'locsim_bbox',
         phase='test',
-        outfile_prefix=outfile_prefix,
     ),
     dict(
         type='CocoMetric',
@@ -89,9 +86,8 @@ bev_test_evaluator = [
         nms_mode='none',
         iou_type='locsim',
         prefix='test/locsim',
-        val_prefix='locsim',
+        outfile_prefix=outfile_prefix + 'locsim',
         phase='test',
-        outfile_prefix=outfile_prefix,
     ),
 ]
 
