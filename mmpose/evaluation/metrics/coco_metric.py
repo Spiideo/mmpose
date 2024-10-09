@@ -592,7 +592,7 @@ class CocoMetric(BaseMetric):
         elif self.iou_type.startswith('locsim'):
             stats_names = [
                 'AP', 'AP .5', 'AP .75', 'AP (S)', 'AP (M)', 'AP (L)', 'AR', 'AR .5',
-                'AR .75', 'AR (S)', 'AR (M)', 'AR (L)', 'precision', 'recall', 'f1', 'score_threshold'
+                'AR .75', 'AR (S)', 'AR (M)', 'AR (L)', 'precision', 'recall', 'f1', 'score_threshold', 'frame_accuracy'
             ]
         else:
             stats_names = [

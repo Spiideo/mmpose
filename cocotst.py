@@ -14,13 +14,10 @@ if __name__ == '__main__':
 
 
     coco_eval.params.useSegm = None
-    coco_eval.params.imgIds = [0]
+    coco_eval.params.imgIds = [0, 1]
     coco_eval.params.score_threshold = 0.1
 
 
     coco_eval.evaluate()
     coco_eval.accumulate()
     coco_eval.summarize()
-
-    print(coco_eval.stats[-8:-4])
-    print(coco_eval.stats[-4:])
