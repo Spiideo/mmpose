@@ -1,7 +1,7 @@
 # Spiideo SoccerNet SynLoc - Single Frame World Coordinate Athlete Detection and Localization with Synthetic Data
 
 This is the official code release for baseline method presented in the Spiideo SoccerNet SynLoc paper. It is
-based on [mmpose](https://github.com/open-mmlab/mmpose).
+a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
 
 ## Installation
 
@@ -22,5 +22,38 @@ based on [mmpose](https://github.com/open-mmlab/mmpose).
 
 ## Citation
 
-If you use this code for your research, please cite:
+If this project benefits your work, please kindly consider citing the original papers:
 
+```bibtex
+@inproceedings{maji2022yolo,
+  title={YOLO-Pose: Enhancing YOLO for Multi Person Pose Estimation Using Object Keypoint Similarity Loss},
+  author={Maji, Debapriya and Nagori, Soyeb and Mathew, Manu and Poddar, Deepak},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={2637--2646},
+  year={2022}
+}
+```
+
+```bibtex
+@article{yolox2021,
+  title={{YOLOX}: Exceeding YOLO Series in 2021},
+  author={Ge, Zheng and Liu, Songtao and Wang, Feng and Li, Zeming and Sun, Jian},
+  journal={arXiv preprint arXiv:2107.08430},
+  year={2021}
+}
+```
+
+```bibtex
+@misc{mmpose2020,
+    title={OpenMMLab Pose Estimation Toolbox and Benchmark},
+    author={MMPose Contributors},
+    howpublished = {\url{https://github.com/open-mmlab/mmpose}},
+    year={2020}
+}
+```
+
+Additionally, please cite our work as well:
+
+```bibtex
+...
+```
