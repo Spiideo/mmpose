@@ -572,7 +572,7 @@ class CocoMetric(BaseMetric):
         else:
             coco_eval = COCOeval(self.coco, coco_det, self.iou_type, sigmas, self.use_area)
 
-        if self.iou_type.startswith('locsim') and self.phase == 'test':
+        if self.iou_type.startswith('locsim') and self.phase in ['test', 'challenge']:
             val_stats_fn = f'{outfile_prefix}_val_stats.json'
             if not osp.exists(val_stats_fn):
                 raise FileNotFoundError('For a proper test evaluation: first run a val evaluation (to get optimal score threshold form validation set) with the same outfile_prefix.')

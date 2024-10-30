@@ -59,6 +59,10 @@ def parse_args():
         '--badcase',
         action='store_true',
         help='whether analyze badcase in test')
+    parser.add_argument(
+        '--challenge',
+        action='store_true',
+        help='prepare data for challenge submition only')
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -143,6 +147,9 @@ def main():
 
     # load config
     cfg = Config.fromfile(args.config)
+    if args.challenge:
+        cfg.test_evaluator = cfg.bev_challenge_evaluator
+        cfg.test_dataloader['dataset'].update(cfg.challenge_dataset)
     cfg = merge_args(cfg, args)
 
     # build the runner from config

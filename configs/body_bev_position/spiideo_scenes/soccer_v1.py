@@ -25,9 +25,17 @@ test_dataset=dict(
         data_prefix=dict(img='test'),
         filter_cfg=dict(filter_empty_gt=False, min_size=0),
 )
+challenge_dataset=dict(
+        type=dataset_type,
+        data_root=dataset_root,
+        ann_file='annotations/challenge_public.json',
+        data_prefix=dict(img='challenge'),
+        filter_cfg=dict(filter_empty_gt=False, min_size=0),
+)
 
 val_evaluator_ann_file = dataset_root + 'annotations/val.json'
 test_evaluator_ann_file = dataset_root + 'annotations/test.json'
+challenge_evaluator_ann_file = dataset_root + 'annotations/challenge_public.json'
 
 bev_val_evaluator = [
     dict(
@@ -57,6 +65,20 @@ bev_val_evaluator = [
         prefix='locsim',
         outfile_prefix=outfile_prefix + 'locsim',
         phase='val',
+    ),
+]
+
+bev_challenge_evaluator = [
+    dict(
+        type='CocoMetric',
+        ann_file=challenge_evaluator_ann_file,
+        score_mode='bbox',
+        nms_mode='none',
+        iou_type='locsim',
+        prefix='challange/locsim',
+        outfile_prefix=outfile_prefix + 'locsim',
+        phase='challenge',
+        format_only=True,
     ),
 ]
 

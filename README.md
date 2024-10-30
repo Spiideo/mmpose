@@ -18,7 +18,41 @@ a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
 
 ## Evaluation
 
+To evaluate a pretrained model, the command below can be used. It will first run the evaluation
+on the validation set and choose the final score threshold that maximizes the F1-score there. The
+the model will be evaluated on the testset using choosen threshold. Results will be printen and as
+well as stored in `work_dirs/<config name>/<date>_<time>/<date>_<time>.json`.
+
+```bash
+python tools/test.py configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth
+```
+
 ## Training
+
+To train on a system with 4 GPUs, use for example
+
+```bash
+    bash ./tools/dist_train.sh configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py 4 --amp
+```
+
+For higher resolution inputs, the memory on the GPUs might not hold a full batch. In that case the batch can be split into multiple passes using gradient accumulation, i.e.
+
+```bash
+bash ./tools/dist_train.sh configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_960.py 4 --amp --cfg-options train_dataloader.batch_size=32 optim_wrapper.accumulative_counts=2
+
+bash ./tools/dist_train.sh configs/body_bev_position/spiideo_scenes/yoloxpose_m_4xb64-300e_960.py 4 --amp --cfg-options train_dataloader.batch_size=8 optim_wrapper.accumulative_counts=8
+```
+
+## Challenge
+
+To evaluate on the challenge set and create a file with detections that can be submitted to the
+[challenge server](), use for example:
+
+```bash
+python tools/test.py configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth --challenge
+```
+
+This will produce `/tmp/tmp_results_locsim.keypoints.json` and `/tmp/tmp_results_locsim_val_stats.json`, which are used by the [submission script](https://github.com/Spiideo/sskit/tree/master#challenge-submission).
 
 ## Citation
 
