@@ -578,6 +578,7 @@ class CocoMetric(BaseMetric):
                 raise FileNotFoundError('For a proper test evaluation: first run a val evaluation (to get optimal score threshold form validation set) with the same outfile_prefix.')
             with open(val_stats_fn) as fd:
                 coco_eval.params.score_threshold = json.load(fd)['stats']['score_threshold']
+        coco_eval.params.position_from_keypoint_index = 1
 
         coco_eval.params.useSegm = None
         coco_eval.evaluate()

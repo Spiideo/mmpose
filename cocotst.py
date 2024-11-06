@@ -16,6 +16,7 @@ if __name__ == '__main__':
     coco_eval.params.useSegm = None
     coco_eval.params.imgIds = [0, 1]
     coco_eval.params.score_threshold = 0.1
+    coco_eval.params.position_from_keypoint_index = 1
 
 
     coco_eval.evaluate()

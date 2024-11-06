@@ -15,3 +15,7 @@ munkres
 xtcocotools>=1.12
 clearml
 
+
+
+git+https://github.com/Spiideo/sskit
+numpy==1.26.4
