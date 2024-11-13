@@ -1,6 +1,6 @@
 _base_ = [
-    '../../body_2d_keypoint/yoloxpose/coco/yoloxpose_tiny_4xb64-300e_coco-640.py',
-    'soccer_v1.py',
+    '../../body_2d_keypoint/yoloxpose/coco/yoloxpose_s_8xb32-300e_coco-640.py',
+    'synloc.py',
 ]
 
 train_dataloader = dict(dataset=_base_.train_dataset, num_workers=16, batch_size=64)
@@ -9,7 +9,7 @@ test_dataloader = dict(dataset=_base_.test_dataset, num_workers=4)
 val_evaluator = _base_.bev_val_evaluator
 test_evaluator = _base_.bev_test_evaluator
 visualizer = _base_.clearml_visualizer
-visualizer['vis_backends'][0]['init_kwargs']['task_name'] = 'yoloxpose_tiny_8xb32-300e_coco-640'
+visualizer['vis_backends'][0]['init_kwargs']['task_name'] = 'yoloxpose_s_8xb32-300e_coco-640'
 
 model = dict(head=dict(
     num_keypoints=2,

@@ -1,5 +1,5 @@
 dataset_info = dict(
-    dataset_name='spiideo_scene',
+    dataset_name='spiideo_soccernet_synloc',
     # paper_info=dict(
     #     author='Mykhaylo Andriluka and Leonid Pishchulin and '
     #     'Peter Gehler and Schiele, Bernt',

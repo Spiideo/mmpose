@@ -1,8 +1,8 @@
 outfile_prefix = f'/tmp/tmp_results_'
 
-dataset_type = 'SpiideoScenes'
-dataset_root = 'data/SpiideoScenes/Soccer/v1/'
-dataset_metainfo = 'configs/_base_/datasets/spiideo_scenes.py'
+dataset_type = 'SpiideoSoccerNetSynLocDataset'
+dataset_root = 'data/SoccerNet/SpiideoSynLoc/'
+dataset_metainfo = 'configs/_base_/datasets/spiideo_soccernet_synloc.py'
 
 train_dataset=dict(
         type=dataset_type,
