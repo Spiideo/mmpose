@@ -17,5 +17,5 @@ clearml
 
 
 
-git+https://github.com/Spiideo/sskit
+sskit>=0.2.0
 numpy==1.26.4
