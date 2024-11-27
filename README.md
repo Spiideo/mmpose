@@ -9,12 +9,12 @@ a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
 
 | Model | Input Size | GFLOPS | mAP-LocSim | Precision | Recall | F1 | Frame Acc. | Download |
 |:-----:|:----------:|:------:|:----------:|:---------:|:------:|:--:|:----------:|:--------:|
-| [YOLOX-tiny](configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py)| 640 | 10.3 |  60.6 | 81.7 | 75.0 | 78.2 | 10.0 | [model](),  [log]()
-| [YOLOX-s](configs/body_bev_position/spiideo_scenes/yoloxpose_s_4xb64-300e_640.py)| 640 | 18.3 | 63.6 | 84.9 | 77.0 | 80.8 | 11.3 | [model](),  [log]()
-| [YOLOX-m](configs/body_bev_position/spiideo_scenes/yoloxpose_m_4xb64-300e_640.py)| 640 | 47.9 | 67.8 | 87.5 | 80.0 | 83.6 | 15.4 | [model](),  [log]()
-| [YOLOX-tiny](configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_960.py)| 960 | 23.3 | 72.6 | 90.4 | 84.0 | 87.1 | 20.9 | [model](),  [log]()
-| [YOLOX-s](configs/body_bev_position/spiideo_scenes/yoloxpose_s_4xb64-300e_960.py)| 960 | 41.1 | 76.3 | 88.0 | 88.0 | 88.0 | 28.0 | [model](),  [log]()
-| [YOLOX-m](configs/body_bev_position/spiideo_scenes/yoloxpose_m_4xb64-300e_960.py)| 960 | 108.0 | 79.3 | 92.8 | 89.0 | 90.9 | 31.6 | [model](),  [log]()
+| [YOLOX-tiny](configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_640.py)| 640 | 10.3 |  60.6 | 81.7 | 75.0 | 78.2 | 10.0 | [model](),  [log]()
+| [YOLOX-s](configs/body_bev_position/spiideo_soccernet/yoloxpose_s_4xb64-300e_640.py)| 640 | 18.3 | 63.6 | 84.9 | 77.0 | 80.8 | 11.3 | [model](),  [log]()
+| [YOLOX-m](configs/body_bev_position/spiideo_soccernet/yoloxpose_m_4xb64-300e_640.py)| 640 | 47.9 | 67.8 | 87.5 | 80.0 | 83.6 | 15.4 | [model](),  [log]()
+| [YOLOX-tiny](configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_960.py)| 960 | 23.3 | 72.6 | 90.4 | 84.0 | 87.1 | 20.9 | [model](),  [log]()
+| [YOLOX-s](configs/body_bev_position/spiideo_soccernet/yoloxpose_s_4xb64-300e_960.py)| 960 | 41.1 | 76.3 | 88.0 | 88.0 | 88.0 | 28.0 | [model](),  [log]()
+| [YOLOX-m](configs/body_bev_position/spiideo_soccernet/yoloxpose_m_4xb64-300e_960.py)| 960 | 108.0 | 79.3 | 92.8 | 89.0 | 90.9 | 31.6 | [model](),  [log]()
 
 ## Evaluation
 
@@ -24,7 +24,7 @@ the model will be evaluated on the testset using choosen threshold. Results will
 well as stored in `work_dirs/<config name>/<date>_<time>/<date>_<time>.json`.
 
 ```bash
-python tools/test.py configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth
+python tools/test.py configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth
 ```
 
 ## Training
@@ -32,15 +32,15 @@ python tools/test.py configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb
 To train on a system with 4 GPUs, use for example
 
 ```bash
-    bash ./tools/dist_train.sh configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py 4 --amp
+    bash ./tools/dist_train.sh configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_640.py 4 --amp
 ```
 
 For higher resolution inputs, the memory on the GPUs might not hold a full batch. In that case the batch can be split into multiple passes using gradient accumulation, i.e.
 
 ```bash
-bash ./tools/dist_train.sh configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_960.py 4 --amp --cfg-options train_dataloader.batch_size=32 optim_wrapper.accumulative_counts=2
+bash ./tools/dist_train.sh configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_960.py 4 --amp --cfg-options train_dataloader.batch_size=32 optim_wrapper.accumulative_counts=2
 
-bash ./tools/dist_train.sh configs/body_bev_position/spiideo_scenes/yoloxpose_m_4xb64-300e_960.py 4 --amp --cfg-options train_dataloader.batch_size=8 optim_wrapper.accumulative_counts=8
+bash ./tools/dist_train.sh configs/body_bev_position/spiideo_soccernet/yoloxpose_m_4xb64-300e_960.py 4 --amp --cfg-options train_dataloader.batch_size=8 optim_wrapper.accumulative_counts=8
 ```
 
 ## Challenge
@@ -49,10 +49,10 @@ To evaluate on the challenge set and create a file with detections that can be s
 [challenge server](), use for example:
 
 ```bash
-python tools/test.py configs/body_bev_position/spiideo_scenes/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth --challenge
+python tools/test.py configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth --challenge
 ```
 
-This will produce `/tmp/tmp_results_locsim.keypoints.json` and `/tmp/tmp_results_locsim_val_stats.json`, which are used by the [submission script](https://github.com/Spiideo/sskit/tree/master#challenge-submission).
+This will produce `tmp_results_locsim.keypoints.json` and `tmp_results_locsim_val_stats.json`, which are used by the [submission script](https://github.com/Spiideo/sskit/tree/master#challenge-submission).
 
 ## Citation
 

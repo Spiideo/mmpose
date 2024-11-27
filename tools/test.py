@@ -2,6 +2,8 @@
 import argparse
 import os
 import os.path as osp
+import shutil
+from glob import glob
 
 import mmengine
 from mmengine.config import Config, DictAction
@@ -168,6 +170,12 @@ def main():
     # start testing
     runner.val()
     runner.test()
+
+    if args.challenge:
+        for fn in glob(cfg.test_evaluator[0]['outfile_prefix'] + '*'):
+            ofn = osp.basename(fn)
+            print(ofn)
+            shutil.copyfile(fn, ofn)
 
 
 if __name__ == '__main__':
