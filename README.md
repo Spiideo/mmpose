@@ -16,6 +16,10 @@ a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
 | [YOLOX-s](configs/body_bev_position/spiideo_soccernet/yoloxpose_s_4xb64-300e_960.py)| 960 | 41.1 | 76.3 | 88.0 | 88.0 | 88.0 | 28.0 | [model](),  [log]()
 | [YOLOX-m](configs/body_bev_position/spiideo_soccernet/yoloxpose_m_4xb64-300e_960.py)| 960 | 108.0 | 79.3 | 92.8 | 89.0 | 90.9 | 31.6 | [model](),  [log]()
 
+## Data preparation
+
+See [sskit data download](https://github.com/Spiideo/sskit/tree/master#data-download).
+
 ## Evaluation
 
 To evaluate a pretrained model, the command below can be used. It will first run the evaluation
