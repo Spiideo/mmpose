@@ -93,5 +93,14 @@ If this project benefits your work, please kindly consider citing the original p
 Additionally, please cite our work as well:
 
 ```bibtex
-...
+@inproceedings{ardo2025,
+  author={Håkan Ardö and Mikael Nilsson and Anthony Cioppa and Floriane Magera and Silvio Giancola and Haochen Liu and Bernard Ghanem and Marc Van Droogenbroeck},
+  booktitle={In Proceedings of the 20th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 2: VISAPP},
+  title={Spiideo SoccerNet SynLoc - Single Frame World Coordinate Athlete Detection and Localization with Synthetic Data},
+  year={2025},
+  pages={278-285},
+  publisher={SciTePress},
+  organization={INSTICC},
+  issn={2184-4321}
+}
 ```
