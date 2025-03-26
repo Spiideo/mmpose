@@ -1,5 +1,7 @@
 # Spiideo SoccerNet SynLoc - Single Frame World Coordinate Athlete Detection and Localization with Synthetic Data
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/spiideo-soccernet-synloc-single-frame-world/object-localization-on-spiideo-soccernet)](https://paperswithcode.com/sota/object-localization-on-spiideo-soccernet?p=spiideo-soccernet-synloc-single-frame-world)
+
 This is the official code release for baseline method presented in the Spiideo SoccerNet SynLoc paper. It is
 a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
 

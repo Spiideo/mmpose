@@ -42,6 +42,7 @@ for snap in work_dirs.rglob('**/epoch_300.pth'):
     common = [Resolution(res), gflops[name, res], stats['test/bbox/AP']*100]
     rows.append([name + ' bbox'] + common + [stats['test/locsim_bbox/AP']*100, stats['test/locsim_bbox/precision']*100, stats['test/locsim_bbox/recall']*100, stats['test/locsim_bbox/f1']*100, stats['test/locsim_bbox/frame_accuracy']*100])
     rows.append([name + ' pose'] + common + [stats['test/locsim/AP']*100, stats['test/locsim/precision']*100, stats['test/locsim/recall']*100, stats['test/locsim/f1']*100, stats['test/locsim/frame_accuracy']*100])
+    rows[-1].append(str(fn))
 
 def fmt(val):
     if isinstance(val, str):
