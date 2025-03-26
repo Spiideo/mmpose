@@ -9,9 +9,18 @@
 
 </div>
 
+>**[Spiideo SoccerNet SynLoc - Single Frame World Coordinate Athlete Detection and Localization with Synthetic Data](https://www.scitepress.org/publishedPapers/2025/131082/pdf/index.html)**
+>
+> Håakan Ardö, Mikael Nilsson, Anthony Cioppa, Floriane Magera, Silvio Giancola, Haochen Liu, Bernard Ghanem, Marc Van Droogenbroeck
+>
+>[*VISAPP 2025*](https://www.scitepress.org/publishedPapers/2025/131082/)
+>
+
 
 This is the official code release for baseline method presented in the Spiideo SoccerNet SynLoc paper. It is
 a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
+
+
 
 ## Installation
 
