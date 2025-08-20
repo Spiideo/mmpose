@@ -4,12 +4,13 @@ import os
 import os.path as osp
 import shutil
 from glob import glob
+import json
 
 import mmengine
 from mmengine.config import Config, DictAction
 from mmengine.hooks import Hook
 from mmengine.runner import Runner
-
+import zipfile
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -171,11 +172,14 @@ def main():
     runner.val()
     runner.test()
 
-    if args.challenge:
-        for fn in glob(cfg.test_evaluator[0]['outfile_prefix'] + '*'):
-            ofn = osp.basename(fn)
-            print(ofn)
-            shutil.copyfile(fn, ofn)
+    prefix = cfg.test_evaluator[-1]['outfile_prefix']
+    shutil.copyfile(prefix + '.keypoints.json', 'results.json')
+    th = json.load(open(prefix + '_val_stats.json'))['stats']['score_threshold']
+    json.dump(dict(score_threshold=th), open('metadata.json', 'w'))
+    ofn = "challenge_submission.zip" if args.challenge else "test_submission.zip"
+    with zipfile.ZipFile(ofn, 'w') as zipf:
+        zipf.write('results.json')
+        zipf.write('metadata.json')
 
 
 if __name__ == '__main__':
