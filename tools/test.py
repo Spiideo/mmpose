@@ -175,7 +175,7 @@ def main():
     prefix = cfg.test_evaluator[-1]['outfile_prefix']
     shutil.copyfile(prefix + '.keypoints.json', 'results.json')
     th = json.load(open(prefix + '_val_stats.json'))['stats']['score_threshold']
-    json.dump(dict(score_threshold=th), open('metadata.json', 'w'))
+    json.dump(dict(score_threshold=th, position_from_keypoint_index=1), open('metadata.json', 'w'))
     ofn = "challenge_submission.zip" if args.challenge else "test_submission.zip"
     with zipfile.ZipFile(ofn, 'w') as zipf:
         zipf.write('results.json')

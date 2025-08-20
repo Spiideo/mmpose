@@ -28,9 +28,7 @@ a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
     git clone https://github.com/Spiideo/mmpose.git
     git checkout spiideo_scenes
 
-    docker run -ti  -v `pwd`:/workspace -u root hakanardo/mmpose
-    pip install sskit --upgrade
-    pip install -e .
+    docker run -ti  -v `pwd`:/workspace hakanardo/mmpose
 
 ```
 
