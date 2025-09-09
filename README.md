@@ -44,6 +44,8 @@ a fork of the [mmpose](https://github.com/open-mmlab/mmpose) repo.
 | [YOLOX-s](configs/body_bev_position/spiideo_soccernet/yoloxpose_s_4xb64-300e_960.py)| 960 | 41.1 | 76.3 | 88.0 | 88.0 | 88.0 | 28.0 | [model, log](https://research.spiideo.com/login/index.html)
 | [YOLOX-m](configs/body_bev_position/spiideo_soccernet/yoloxpose_m_4xb64-300e_960.py)| 960 | 108.0 | 79.3 | 92.8 | 89.0 | 90.9 | 31.6 | [model, log](https://research.spiideo.com/login/index.html)
 
+This table shows the metrics as presented in the paper. There was however a [bug](https://github.com/Spiideo/sskit/commit/57c4dc181274c6bfcb80bce242fd0de4bd258cbd) fixed in the develoopment tools (sskit) which adjusted the values a bit. This is why the baseline on the leaderboard, YOLOX-m 960, has mAP-LocSim 76.17 instead of 79.3.
+
 ## Data preparation
 
 See [sskit data download](https://github.com/Spiideo/sskit/tree/master#data-download).
