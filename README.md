@@ -3,9 +3,9 @@
 # Spiideo SoccerNet SynLoc
 ## Single Frame World Coordinate Athlete Detection and Localization with Synthetic Data
 
-[[Paper](https://www.scitepress.org/publishedPapers/2025/131082/pdf/index.html)] [[Slides](https://docs.google.com/presentation/d/1Eh-pBiOOOENYUm7Hq6aESvvvi3MwappiDwSA7qsqg54/edit?usp=sharing)] [[Baseline](https://github.com/Spiideo/mmpose/tree/spiideo_scenes)] [[Devkit](https://github.com/Spiideo/sskit)] [[Data Download](https://research.spiideo.com/)] [[Leaderboard](https://paperswithcode.com/sota/3d-object-detection-on-spiideo-soccernet)]
+[[Paper](https://www.scitepress.org/publishedPapers/2025/131082/pdf/index.html)] [[Slides](https://docs.google.com/presentation/d/1Eh-pBiOOOENYUm7Hq6aESvvvi3MwappiDwSA7qsqg54/edit?usp=sharing)] [[Baseline](https://github.com/Spiideo/mmpose/tree/spiideo_scenes)] [[Devkit](https://github.com/Spiideo/sskit)] [[Data Download](https://research.spiideo.com/)] [[Leaderboard](https://www.codabench.org/competitions/10128/#/results-tab)] [[Challenge](https://www.codabench.org/competitions/10155/)]
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/spiideo-soccernet-synloc-single-frame-world/3d-object-detection-on-spiideo-soccernet)](https://paperswithcode.com/sota/3d-object-detection-on-spiideo-soccernet?p=spiideo-soccernet-synloc-single-frame-world)
+<!-- [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/spiideo-soccernet-synloc-single-frame-world/3d-object-detection-on-spiideo-soccernet)](https://paperswithcode.com/sota/3d-object-detection-on-spiideo-soccernet?p=spiideo-soccernet-synloc-single-frame-world) -->
 
 </div>
 
