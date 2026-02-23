@@ -86,7 +86,7 @@ To evaluate on the challenge set and create a file with detections that can be s
 python tools/test.py configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth --challenge
 ```
 
-This will produce `results.json` and `metadata.json`, which can be placed in a `.zip` archive and submitted. There is also a [test server](https://www.codabench.org/competitions/10128/) that evaluates on the test set. Note that these files are in the alternative convenience format described at the end of [devkit](https://github.com/Spiideo/sskit#map-locsim-evaluation) with the `position_from_keypoint_index` parameter specified in the `metadata.json` file.
+This will produce `results.json` and `metadata.json`, which can be placed in a `.zip` archive and submitted. There is also a [test server](https://www.codabench.org/competitions/10128/) that evaluates on the test set. Note that these files are in the alternative convenience format described at the end of the [devkit evaluation section](https://github.com/Spiideo/sskit#map-locsim-evaluation) with the `position_from_keypoint_index` parameter specified in the `metadata.json` file.
 
 ## Citation
 
