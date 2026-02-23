@@ -80,13 +80,13 @@ bash ./tools/dist_train.sh configs/body_bev_position/spiideo_soccernet/yoloxpose
 ## Challenge
 
 To evaluate on the challenge set and create a file with detections that can be submitted to the
-[challenge server](), use for example:
+[challenge server](https://www.codabench.org/competitions/10155/), use for example:
 
 ```bash
 python tools/test.py configs/body_bev_position/spiideo_soccernet/yoloxpose_tiny_4xb64-300e_640.py work_dirs/yoloxpose_tiny_4xb64-300e_640/epoch_300.pth --challenge
 ```
 
-This will produce `tmp_results_locsim.keypoints.json` and `tmp_results_locsim_val_stats.json`, which are used by the [submission script](https://github.com/Spiideo/sskit/tree/master#challenge-submission).
+This will produce `results.json` and `metadata.json`, which can be placed in a `.zip` archive and submitted. There is also a [test server](https://www.codabench.org/competitions/10128/) that evaluates on the test set. Note that these files are not in the exact same format as described in the [devkit](https://github.com/Spiideo/sskit#map-locsim-evaluation) as the format has been simplified, but the evaluation servers supports both formats.
 
 ## Citation
 
